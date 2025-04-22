@@ -6,6 +6,6 @@ const appointmentsSchema=mongoose.Schema({
     status:String,
     createdAt:Date,
     updatedAt:Date
-});//יצירת סכימה עבור המוצרים 
-const model=mongoose.model('Appointments',appointmentsSchema);//יצירת מודל דרכו נעבוד מול בסיס הנתונים עם המוצרים 
+});//יצירת סכימה עבור הפגישות 
+const model=mongoose.model('Appointments',appointmentsSchema);//יצירת מודל דרכו נעבוד מול בסיס הנתונים עם הפגישות 
 module.exports=model;

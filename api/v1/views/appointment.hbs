@@ -1,0 +1,97 @@
+
+ {{!-- <div class="container mt-4">
+  <h2 class="mb-4"> ניהול פגישות אישי:</h2>
+ <style>
+        h2{
+            color: white;
+        }
+        /* אם יש לך כותרות מסוג אחר, שנה גם אותן */
+        h2 {
+            color:darkred;
+        }
+    </style>
+  <table class="table table-striped table-bordered text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>שם לקוח</th>
+        <th>תאריך</th>
+        <th>סטטוס</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each appointments}}
+      <tr>
+        <td>{{clientName}}</td>
+        <td>{{formattedDate}}</td>
+        <td>{{status}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div> --}}
+
+{{!-- <div class="row row-cols-1 row-cols-md-3 g-4 mb-2">
+   <h2 class="mb-4 text-center"> ניהול פגישות אישי:</h2>
+    <style>
+       
+        /* אם יש לך כותרות מסוג אחר, שנה גם אותן */
+        h2 {
+            color:darkred;
+        }
+    </style>
+  {{#each appointments}}
+  
+    <div class="col">
+      <div class="card h-100">
+        <img src="/pics/Diary.png" class="card-img-top" alt="תחום הפגישה">
+        <div class="card-body">
+          <h5 class="card-title">{{clientName}}</h5>
+          <p class="card-text">{{this.description}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <small class="text-muted">{{this.formattedDate}}</small>
+          <a href="#" class="btn btn-sm btn-primary">צפייה</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div> --}}
+<div class="container">
+  <h2 class="mb-4 text-center">ניהול פגישות אישי:</h2>
+  <style>
+       
+        /* אם יש לך כותרות מסוג אחר, שנה גם אותן */
+        h2 {
+            color:darkred;
+        }
+    </style>
+  <div class="row g-4 mb-3">
+    {{#each appointments}}
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="/pics/Diary.png" class="card-img-top" alt="תחום הפגישה">
+          <div class="card-body">
+            <h5 class="card-title">{{clientName}}</h5>
+            <p class="card-text">{{this.description}}</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <small class="text-muted">{{this.formattedDate}}</small>
+            <div class="כרטיסייה">
+    <a href="/client-details.html">צפייה</a>
+    </div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- שבירת שורה אחרי כל 3 כרטיסים --}}
+      {{#if @last}}
+      </div><div class="row g-4 mb-3">
+      {{/if}}
+
+    {{/each}}
+  </div>
+</div>
+
+
+
+   

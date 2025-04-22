@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2 class="mb-4" style="color: darkred;">צור קשר איתנו</h2>
+  <form action="/users/contact" method="POST">
+    <div class="mb-3">
+      <label class="form-label">שם מלא</label>
+      <input type="text" class="form-control" name="fullName" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">אימייל</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">הודעה</label>
+      <textarea class="form-control" name="message" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">שלח</button>
+  </form>
+</div>

@@ -3,10 +3,11 @@ const app=express();//מופע של האפליקציה
 const morgan=require('morgan');//טעינת הספרייה שמשמשת לרישום בקשות http 
 const   { engine } =require('express-handlebars');//קישור לספרייה
 const mongoose=require('mongoose');//קישור לספרייה
-//const jwt=require('jsonwebtoken');
+const jwt=require('jsonwebtoken');
+const appointmentHtmlRouter = require('./api/v1/routes/appointmentscopy'); // HTML תצוגה
 const appointmentRouter =require('./api/v1/routes/appointments');//טעינת ניתובים מקובץ אחר
 const userRouter=require('./api/v1/routes/user');
-const auth=require('./api/v1/middlewares/auth');//ייבוא של שכבת האבטחה
+//const auth=require('./api/v1/middlewares/auth');//ייבוא של שכבת האבטחה
 const { partials } = require('handlebars');
 app.use(morgan('dev'));//הוספת morgan כmiddlewars כדי לרשום בקשות HTTP
 app.use(express.json());//מוסיף middleware שמנתח בקשות JSON.
@@ -24,13 +25,18 @@ mongoose.connect(mongoConnstr).then(()=>{
 app.engine('hbs',engine({
     extname:'hbs',//סיומת הקבצים השייכים למערכת התבניות
     defaultview:'index',//תצוגת ברירת מחדל שתוצג במידה ולא ציינו שם תצוגה
-    layoutsDir:__dirname +'./api/v1/views/layouts',// נתיב לתיקיית תבניות התצוגה,מעטפת 
-    partialsDir:__dirname +'./api/v1/views/partials'//קומפוננטות תצוגה,יחידות תצוגה עצמאיות ומשתנות
+    layoutsDir: __dirname + '/api/v1/views/layouts',// נתיב לתיקיית תבניות התצוגה,מעטפת 
+    partialsDir: __dirname + '/api/v1/views/partials'//'קומפוננטות תצוגה,יחידות תצוגה עצמאיות ומשתנות
 }));
+
 app.set('view engine','hbs');//הגדרת מנוע התצוגה הפעיל
 app.use(express.static('public'));//דפים שלא עוברים עיבוד בצד השרת 
+app.use('/assets/',express.static('public'));
+app.get('/contact',(req,res)=>{
+    return res.status(200).render('contact')
+})
 
-
+app.use('/appointments/view', appointmentHtmlRouter); // דף HTML שמוצג למשתמש
 app.use('/appointments',appointmentRouter);//הוספת הניתובים עבור הפגישות  תחת הנתיב
 app.use('/user',userRouter);
 app.all('*',(req,res)=>{

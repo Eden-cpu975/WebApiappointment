@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('../pics/unnamed.png');
+  background-size: cover;  /* עכשיו התמונה תמלא את כל המסך */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f4e0f6;
+}
+
+
+* .text-body-secondary {
+  color: darkred  !important;
+  font-size: 1.2em;
+}
+
+.card {
+  max-width: 280px;
+  margin: auto; /* ממרכז את הכרטיס */
+}
+
+.card-img-top {
+  max-height: 160px;
+  object-fit: cover; /* חותך את התמונה למידות */
+}
